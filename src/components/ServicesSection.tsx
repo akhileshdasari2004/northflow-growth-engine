@@ -48,12 +48,12 @@ export default function ServicesSection() {
           {services.map((s) => (
             <div
               key={s.title}
-              className="bg-background p-10 hover:bg-surface transition-colors"
+              className="bg-background p-10 hover:bg-[oklch(0.99_0.005_90)] transition-colors border-l-2 border-l-[oklch(0.65_0.18_50/0.2)] hover:border-l-[oklch(0.65_0.18_50)]"
             >
-              <s.icon className="text-accent-dark w-8 h-8 mb-6" strokeWidth={1.5} />
+              <s.icon className="text-[oklch(0.65_0.18_50)] w-8 h-8 mb-6" strokeWidth={1.5} />
               <h3 className="font-serif text-2xl text-foreground mb-4">{s.title}</h3>
-              <p className="text-muted text-sm leading-relaxed mb-5">{s.body}</p>
-              <span className="border border-border-accent text-accent-dark text-xs tracking-widest uppercase px-3 py-1 inline-block">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-5">{s.body}</p>
+              <span className="border border-[oklch(0.65_0.18_50/0.4)] text-[oklch(0.55_0.22_45)] text-xs tracking-widest uppercase px-3 py-1 inline-block">
                 {s.pill}
               </span>
             </div>

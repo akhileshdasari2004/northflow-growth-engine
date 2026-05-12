@@ -39,12 +39,12 @@ export default function HowItWorksSection() {
         </div>
         <div className="grid md:grid-cols-4 gap-8">
           {steps.map((s) => (
-            <div key={s.n} className="border-t border-border-accent pt-8">
-              <div className="font-serif text-6xl text-border-accent leading-none mb-6">
+            <div className="border-t-2 border-t-[oklch(0.65_0.18_50)] pt-8">
+              <div className="font-serif text-6xl text-[oklch(0.88_0.015_90/0.5)] leading-none mb-6">
                 {s.n}
               </div>
               <h3 className="text-sm font-medium text-foreground mb-2 font-sans">{s.title}</h3>
-              <p className="text-muted text-sm leading-relaxed">{s.body}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>

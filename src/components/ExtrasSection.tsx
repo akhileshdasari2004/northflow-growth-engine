@@ -23,9 +23,9 @@ export default function ExtrasSection() {
       <div className="max-w-6xl mx-auto px-12">
         <div className="grid md:grid-cols-4 gap-8">
           {extras.map((e) => (
-            <div key={e.title} className="border-t border-border-accent pt-6">
+            <div className="border-t-2 border-t-[oklch(0.65_0.18_50)] pt-6">
               <h3 className="text-sm font-medium text-foreground mb-2 font-sans">{e.title}</h3>
-              <p className="text-muted text-xs leading-relaxed">{e.body}</p>
+              <p className="text-muted-foreground text-xs leading-relaxed">{e.body}</p>
             </div>
           ))}
         </div>

@@ -17,7 +17,8 @@ export default function HeroSection() {
             <Badge variant="eyebrow">HVAC GROWTH SYSTEMS</Badge>
           </div>
           <h1 className="font-serif text-6xl leading-tight text-foreground mb-6">
-            Stop losing jobs to <em className="italic text-accent">missed calls</em>
+            Stop losing jobs to{" "}
+            <em className="not-italic text-gradient-accent font-serif">missed calls</em>
           </h1>
           <p className="text-muted text-base leading-relaxed max-w-md mb-10">
             We help HVAC contractors recover missed calls, multiply Google reviews, and grow
@@ -35,19 +36,19 @@ export default function HeroSection() {
 
         <div className="space-y-px bg-border-accent">
           <div className="bg-elevated border border-border-accent p-8">
-            <div className="font-serif text-5xl text-accent mb-3">127+</div>
-            <div className="text-muted text-sm">
+            <div className="font-serif text-5xl text-gradient-accent mb-3">127+</div>
+            <div className="text-muted-foreground text-sm">
               Missed calls recovered per client per year
             </div>
           </div>
           <div className="grid grid-cols-2 gap-px bg-border-accent">
             <div className="bg-elevated border border-border-accent p-8">
-              <div className="font-serif text-4xl text-accent mb-3">$2.3M</div>
-              <div className="text-muted text-sm">Revenue influenced</div>
+              <div className="font-serif text-4xl text-gradient-accent mb-3">$2.3M</div>
+              <div className="text-muted-foreground text-sm">Revenue influenced</div>
             </div>
             <div className="bg-elevated border border-border-accent p-8">
-              <div className="font-serif text-4xl text-accent mb-3">94%</div>
-              <div className="text-muted text-sm">Client retention rate</div>
+              <div className="font-serif text-4xl text-gradient-accent mb-3">94%</div>
+              <div className="text-muted-foreground text-sm">Client retention rate</div>
             </div>
           </div>
         </div>

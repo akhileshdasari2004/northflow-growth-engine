@@ -1,13 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import NavBar from "@/components/NavBar";
-import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
-import HowItWorksSection from "@/components/HowItWorksSection";
-import ImpactSection from "@/components/ImpactSection";
-import ExtrasSection from "@/components/ExtrasSection";
-import FAQSection from "@/components/FAQSection";
-import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
+import { FloatingHeader } from "@/components/ui/floating-header";
+import { Hero } from "@/components/ui/hero";
+import { TestimonialsSection } from "@/components/ui/testimonials-section";
+import { FeaturesSection } from "@/components/ui/features-section";
+import { DashboardSection } from "@/components/ui/dashboard-section";
+import { HowItWorksSection, ImpactSection } from "@/components/ui/process-section";
+import { FAQSection } from "@/components/ui/faq-section";
+import { CTASection, Footer } from "@/components/ui/footer-section";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -34,13 +33,52 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <NavBar />
+      <FloatingHeader />
       <main>
-        <HeroSection />
-        <ServicesSection />
+        <Hero
+          primaryCta={{ label: "Start Free Audit", href: "#cta" }}
+          secondaryCta={{ label: "See How It Works", href: "#how" }}
+        />
+        <TestimonialsSection
+          testimonials={[
+            {
+              id: 1,
+              name: "Mike Rodriguez",
+              role: "Owner",
+              company: "Rodriguez HVAC",
+              content:
+                "NorthFlow recovered over 40 missed calls in our first month. That's $15,000 in revenue we would have never seen. The team actually takes the time to understand our business.",
+              rating: 5,
+              avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+            },
+            {
+              id: 2,
+              name: "Jennifer Walsh",
+              role: "Operations Manager",
+              company: "Walsh Mechanical",
+              content:
+                "Our Google reviews went from 12 to 89 in six months. The automated request system is seamless and customers love it. Best investment we've made for our business.",
+              rating: 5,
+              avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+            },
+            {
+              id: 3,
+              name: "David Thompson",
+              role: "Founder",
+              company: "Thompson Air Solutions",
+              content:
+                "The membership program helped us build predictable monthly revenue. We went from $2k MRR to over $8k in annual plans. These guys actually deliver on their promises.",
+              rating: 5,
+              avatar: "https://randomuser.me/api/portraits/men/46.jpg",
+            },
+          ]}
+          trustedCompanies={["ServiceTitan", "Housecall Pro", "Jobber", "FieldEdge", "Commusoft"]}
+          trustedCompaniesTitle="Powering HVAC businesses across North America"
+        />
+        <FeaturesSection />
+        <DashboardSection />
         <HowItWorksSection />
         <ImpactSection />
-        <ExtrasSection />
         <FAQSection />
         <CTASection />
       </main>

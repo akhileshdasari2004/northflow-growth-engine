@@ -54,10 +54,10 @@ export default function FAQSection() {
               value={`item-${i}`}
               className="border-t border-border-accent border-b-0"
             >
-              <AccordionTrigger className="text-sm text-foreground py-5 hover:text-accent font-normal hover:no-underline">
+              <AccordionTrigger className="text-sm text-foreground py-5 hover:text-[oklch(0.65_0.18_50)] font-normal hover:no-underline">
                 {f.q}
               </AccordionTrigger>
-              <AccordionContent className="text-muted text-sm leading-relaxed pb-5">
+              <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
                 {f.a}
               </AccordionContent>
             </AccordionItem>

@@ -22,9 +22,9 @@ export default function ImpactSection() {
         </div>
         <div className="grid md:grid-cols-3 gap-px bg-border-accent border border-border-accent">
           {metrics.map((m) => (
-            <div key={m.label} className="bg-background text-center py-16 px-8">
-              <div className="font-serif text-6xl text-accent mb-3">{m.value}</div>
-              <div className="text-muted text-sm leading-relaxed max-w-[180px] mx-auto">
+            <div className="bg-background text-center py-16 px-8">
+              <div className="font-serif text-6xl text-gradient-accent mb-3">{m.value}</div>
+              <div className="text-muted-foreground text-sm leading-relaxed max-w-[180px] mx-auto">
                 {m.label}
               </div>
             </div>
