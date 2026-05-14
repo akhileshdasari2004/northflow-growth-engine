@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Cover } from "@/components/ui/cover";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Star, Users } from "lucide-react";
 import DotPattern from "@/components/ui/dot-pattern";
-import { ScrollReveal, StaggerContainer, StaggerItem, ScaleReveal } from "@/components/ui/scroll-animations";
 
 interface HeroProps extends React.HTMLAttributes<HTMLElement> {
   title?: React.ReactNode;
@@ -94,43 +94,32 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
         >
           <div className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="flex-1 text-center lg:text-left max-w-2xl"
-            >
+            <div className="flex-1 text-center lg:text-left max-w-2xl">
               {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[oklch(0.65_0.18_50/0.3)] bg-[oklch(0.65_0.18_50/0.08)] mb-6"
-              >
+              <div className="hero-animate hero-animate-delay-1 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[oklch(0.65_0.18_50/0.3)] bg-[oklch(0.65_0.18_50/0.08)] mb-6">
                 <span className="w-2 h-2 rounded-full bg-[oklch(0.65_0.18_50)] animate-pulse" />
                 <span className="text-xs tracking-widest uppercase text-[oklch(0.55_0.22_45)] font-medium">
                   HVAC Growth Systems
                 </span>
-              </motion.div>
+              </div>
 
               {/* Title */}
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-foreground mb-6">
+              <h1 className="hero-animate hero-animate-delay-2 font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.1] text-foreground mb-6">
                 {title || (
                   <>
-                    Stop losing jobs to{" "}
-                    <span className="text-gradient-accent italic">missed calls</span>
+                    Stop losing jobs to <Cover>missed calls</Cover>
                   </>
                 )}
               </h1>
 
               {/* Subtitle */}
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+              <p className="hero-animate hero-animate-delay-3 text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
                 {subtitle ||
                   "We help HVAC contractors recover missed calls, multiply Google reviews, and grow recurring maintenance membership revenue — without adding office staff."}
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <div className="hero-animate hero-animate-delay-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 {primaryCta && (
                   <a href={primaryCta.href}>
                     <Button
@@ -154,15 +143,10 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
                   </a>
                 )}
               </div>
-            </motion.div>
+            </div>
 
             {/* Right Stats Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex-1 max-w-md w-full"
-            >
+            <div className="hero-animate hero-animate-delay-2 flex-1 max-w-md w-full relative">
               {/* Main Stats Card */}
               <div className="bg-white rounded-3xl border border-border shadow-xl shadow-[oklch(0.65_0.18_50/0.08)] overflow-hidden">
                 <div className="p-8 border-b border-border">
@@ -178,18 +162,15 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
                 </div>
                 <div className="grid grid-cols-2">
                   {stats.slice(1).map((stat, i) => (
-                    <motion.div
+                    <div
                       key={stat.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 + i * 0.1 }}
-                      className="p-6 border-r border-b border-border last:border-r-0"
+                      className="hero-animate hero-animate-delay-5 p-6 border-r border-b border-border last:border-r-0"
                     >
                       <p className="font-serif text-3xl md:text-4xl text-gradient-accent mb-1">
                         {stat.value}
                       </p>
                       <p className="text-xs text-muted-foreground">{stat.label}</p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -226,18 +207,13 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
                   </div>
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Bottom Decorative Arrow */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-16 h-16 text-[oklch(0.65_0.18_50/0.3)] hidden lg:block"
-          >
+          <div className="hero-animate hero-animate-delay-6 absolute bottom-8 left-1/2 transform -translate-x-1/2 w-16 h-16 text-[oklch(0.65_0.18_50/0.3)] hidden lg:block">
             <ArrowAccent />
-          </motion.div>
+          </div>
         </motion.div>
       </section>
     );
@@ -246,3 +222,17 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
 Hero.displayName = "Hero";
 
 export { Hero };
+
+function HeroAnimations() {
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      document.querySelectorAll(".hero-animate").forEach((el) => {
+        el.classList.add("is-visible");
+      });
+    }, 50);
+    return () => clearTimeout(timer);
+  }, []);
+  return null;
+}
+
+export { HeroAnimations };

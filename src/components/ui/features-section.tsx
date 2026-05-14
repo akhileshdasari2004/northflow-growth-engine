@@ -4,7 +4,6 @@ import { Phone, Star, Users, Shield, Zap, Heart, CheckCircle, Activity } from "l
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { SparklesCore } from "@/components/ui/sparkles";
-import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/scroll-animations";
 import {
   ChartContainer,
   ChartTooltip,
@@ -88,20 +87,20 @@ export function FeaturesSection() {
               speed={0.5}
             />
           </div>
-          <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="section-heading-animate flex items-center justify-center gap-3 mb-6">
             <span className="block w-7 h-px bg-primary" />
             <Badge variant="eyebrow">WHAT WE BUILD</Badge>
             <span className="block w-7 h-px bg-primary" />
           </div>
           <div className="relative">
-            <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
+            <h2 className="section-heading-animate text-4xl md:text-5xl font-sans text-foreground mb-4">
               Growth infrastructure for HVAC teams
             </h2>
             <div className="absolute inset-x-20 top-full mt-2 mx-auto h-[2px] w-3/4 bg-gradient-to-r from-transparent via-[oklch(0.65_0.18_50)] to-transparent" />
           </div>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg mt-6">
-            Three powerful systems working together to recover revenue, build trust, and
-            create predictable recurring income.
+          <p className="section-heading-animate text-muted-foreground max-w-2xl mx-auto text-lg mt-6">
+            Three powerful systems working together to recover revenue, build trust, and create
+            predictable recurring income.
           </p>
         </div>
 
@@ -109,42 +108,36 @@ export function FeaturesSection() {
         <div className="mx-auto grid max-w-5xl border border-border md:grid-cols-2">
           {/* Feature 1 - Left */}
           <div className="relative">
-            <ScrollReveal direction="up" delay={0.1}>
+            <div className="stagger-animate stagger-delay-0">
               <div className="p-6 sm:p-12">
                 <span className="text-muted-foreground flex items-center gap-2">
                   <Phone className="size-4 text-[oklch(0.65_0.18_50)]" />
                   {features[0].subtitle}
                 </span>
-                <p className="mt-8 text-2xl font-semibold text-foreground">
-                  {features[0].title}
-                </p>
+                <p className="mt-8 text-2xl font-semibold text-foreground">{features[0].title}</p>
               </div>
               <div className="px-6 pb-6 sm:px-12">
                 <p className="text-muted-foreground text-sm">{features[0].description}</p>
                 <div className="mt-4 flex items-baseline gap-2">
-                  <span className="text-3xl font-serif text-gradient-accent">
+                  <span className="text-3xl font-sans text-gradient-accent">
                     {features[0].stat}
                   </span>
-                  <span className="text-sm text-muted-foreground">
-                    {features[0].statLabel}
-                  </span>
+                  <span className="text-sm text-muted-foreground">{features[0].statLabel}</span>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-accent transform scale-x-0 transition-transform duration-300 hover:scale-x-100" />
           </div>
 
           {/* Feature 2 - Right */}
-          <ScrollReveal direction="up" delay={0.2}>
+          <div className="stagger-animate stagger-delay-1">
             <div className="overflow-hidden border-t bg-surface p-6 sm:p-12 md:border-0 md:border-l border-border">
               <div className="relative z-10">
                 <span className="text-muted-foreground flex items-center gap-2">
                   <Star className="size-4 text-[oklch(0.65_0.18_50)]" />
                   {features[1].subtitle}
                 </span>
-                <p className="my-8 text-2xl font-semibold text-foreground">
-                  {features[1].title}
-                </p>
+                <p className="my-8 text-2xl font-semibold text-foreground">{features[1].title}</p>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
@@ -162,16 +155,12 @@ export function FeaturesSection() {
                 </div>
               </div>
               <div className="mt-6 flex items-baseline gap-2">
-                <span className="text-3xl font-serif text-gradient-accent">
-                  {features[1].stat}
-                </span>
-                <span className="text-sm text-muted-foreground">
-                  {features[1].statLabel}
-                </span>
+                <span className="text-3xl font-sans text-gradient-accent">{features[1].stat}</span>
+                <span className="text-sm text-muted-foreground">{features[1].statLabel}</span>
               </div>
             </div>
-          </ScrollReveal>
-          <div className="col-span-full border-y border-border p-12">
+          </div>
+          <div className="stagger-animate stagger-delay-2 col-span-full border-y border-border p-12">
             <div className="flex items-center justify-center gap-8">
               <div className="text-center">
                 <p className="text-4xl font-semibold lg:text-5xl text-gradient-accent">
@@ -190,7 +179,7 @@ export function FeaturesSection() {
           </div>
 
           {/* Feature 4 - Activity Chart */}
-          <div className="relative col-span-full">
+          <div className="stagger-animate stagger-delay-3 relative col-span-full">
             <div className="absolute z-10 max-w-lg px-6 pr-12 pt-6 md:px-12 md:pt-12">
               <span className="text-muted-foreground flex items-center gap-2">
                 <Activity className="size-4 text-[oklch(0.65_0.18_50)]" />
@@ -213,14 +202,12 @@ export function FeaturesSection() {
             Trusted by HVAC businesses across North America
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            {["SOC 2 Compliant", "24/7 Support", "99.9% Uptime", "GDPR Ready"].map(
-              (item) => (
-                <div key={item} className="flex items-center gap-2 text-muted-foreground">
-                  <CheckCircle className="w-4 h-4 text-[oklch(0.65_0.18_50)]" />
-                  <span className="text-sm">{item}</span>
-                </div>
-              ),
-            )}
+            {["SOC 2 Compliant", "24/7 Support", "99.9% Uptime", "GDPR Ready"].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-muted-foreground">
+                <CheckCircle className="w-4 h-4 text-[oklch(0.65_0.18_50)]" />
+                <span className="text-sm">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container, SingleOrMultiple } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 import { cn } from "@/lib/utils";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "motion/react";
 
 type ParticlesProps = {
   id?: string;
@@ -19,16 +19,8 @@ type ParticlesProps = {
   particleDensity?: number;
 };
 export const SparklesCore = (props: ParticlesProps) => {
-  const {
-    id,
-    className,
-    background,
-    minSize,
-    maxSize,
-    speed,
-    particleColor,
-    particleDensity,
-  } = props;
+  const { id, className, background, minSize, maxSize, speed, particleColor, particleDensity } =
+    props;
   const [init, setInit] = useState(false);
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -80,7 +72,7 @@ export const SparklesCore = (props: ParticlesProps) => {
                   enable: false,
                   mode: "repulse",
                 },
-                resize: true as any,
+                resize: true as unknown,
               },
               modes: {
                 push: {

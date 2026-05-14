@@ -1,12 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FloatingHeader } from "@/components/ui/floating-header";
-import { Hero } from "@/components/ui/hero";
+import { Hero, HeroAnimations } from "@/components/ui/hero";
 import { TestimonialsSection } from "@/components/ui/testimonials-section";
 import { FeaturesSection } from "@/components/ui/features-section";
 import { DashboardSection } from "@/components/ui/dashboard-section";
 import { HowItWorksSection, ImpactSection } from "@/components/ui/process-section";
 import { FAQSection } from "@/components/ui/faq-section";
 import { CTASection, Footer } from "@/components/ui/footer-section";
+import { Features } from "@/components/ui/features-4";
+import { useScrollAnimations, useNavbarScroll } from "@/components/ui/use-scroll-animations";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -31,9 +33,12 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useScrollAnimations();
+  useNavbarScroll();
   return (
     <div className="min-h-screen bg-background text-foreground">
       <FloatingHeader />
+      <HeroAnimations />
       <main>
         <Hero
           primaryCta={{ label: "Start Free Audit", href: "#cta" }}
@@ -79,6 +84,7 @@ function Index() {
         <DashboardSection />
         <HowItWorksSection />
         <ImpactSection />
+        <Features />
         <FAQSection />
         <CTASection />
       </main>

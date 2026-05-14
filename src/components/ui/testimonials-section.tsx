@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
-import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 export interface Testimonial {
@@ -42,8 +41,6 @@ export function TestimonialsSection({
 }: TestimonialsSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  const controls = useAnimation();
 
   useEffect(() => {
     if (autoRotateInterval <= 0 || testimonials.length <= 1) return;
@@ -53,41 +50,12 @@ export function TestimonialsSection({
     return () => clearInterval(interval);
   }, [testimonials.length, autoRotateInterval]);
 
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
-  }, [isInView, controls]);
-
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
   };
 
   if (testimonials.length === 0) {
@@ -103,12 +71,7 @@ export function TestimonialsSection({
       )}
     >
       <div className="container items-center px-4 md:px-6">
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          variants={containerVariants}
-          className="text-center mb-12 space-y-4"
-        >
+        <div className="testimonial-animate text-center mb-12 space-y-4">
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="block w-7 h-px bg-primary" />
             <span className="text-xs tracking-widest uppercase text-muted-foreground">
@@ -116,27 +79,12 @@ export function TestimonialsSection({
             </span>
             <span className="block w-7 h-px bg-primary" />
           </div>
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-serif text-foreground"
-          >
-            {title}
-          </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-muted-foreground max-w-[700px] mx-auto text-lg"
-          >
-            {subtitle}
-          </motion.p>
-        </motion.div>
+          <h2 className="text-4xl md:text-5xl font-sans text-foreground">{title}</h2>
+          <p className="text-muted-foreground max-w-[700px] mx-auto text-lg">{subtitle}</p>
+        </div>
 
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          variants={containerVariants}
-          className="md:grid md:grid-cols-[1fr_auto] gap-8 items-center max-w-[1000px] mx-auto"
-        >
-          <motion.div variants={itemVariants} className="relative">
+        <div className="testimonial-animate md:grid md:grid-cols-[1fr_auto] gap-8 items-center max-w-[1000px] mx-auto">
+          <div className="relative">
             <div className="absolute -top-6 -left-6 z-10">
               <Quote className="h-12 w-12 text-primary/20" strokeWidth={1} />
             </div>
@@ -193,12 +141,9 @@ export function TestimonialsSection({
                 </Card>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={itemVariants}
-            className="flex md:flex-col gap-4 justify-center mt-8 md:mt-0"
-          >
+          <div className="flex md:flex-col gap-4 justify-center mt-8 md:mt-0">
             <Button
               variant="outline"
               size="icon"
@@ -239,11 +184,11 @@ export function TestimonialsSection({
             >
               <ChevronRight className="h-4 w-4 text-foreground" />
             </Button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {trustedCompanies.length > 0 && (
-          <motion.div variants={itemVariants} className="mt-20 pt-10 border-t border-border">
+          <div className="testimonial-animate mt-20 pt-10 border-t border-border">
             <h3 className="text-sm font-medium text-muted-foreground text-center mb-8">
               {trustedCompaniesTitle}
             </h3>
@@ -254,7 +199,7 @@ export function TestimonialsSection({
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
     </section>

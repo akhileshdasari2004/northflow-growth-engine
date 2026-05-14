@@ -14,6 +14,7 @@ export function WavePath({ className, ...props }: WavePathProps) {
 
   useEffect(() => {
     setPath(progress);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setPath = (p: number) => {

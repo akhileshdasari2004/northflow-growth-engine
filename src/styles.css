@@ -1,8 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap");
+
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -51,7 +51,7 @@
   --accent-dark: oklch(0.55 0.22 45);
   --border: oklch(0.88 0.015 90 / 0.5);
   --border-accent: oklch(0.88 0.015 90 / 0.8);
-  --input: oklch(0.88 0.015 90 / 0.20);
+  --input: oklch(0.88 0.015 90 / 0.2);
   --ring: oklch(0.65 0.18 50);
   --primary: oklch(0.65 0.18 50);
   --primary-foreground: oklch(1 0 0);
@@ -83,7 +83,9 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-serif);
   }
 }
@@ -104,7 +106,11 @@
 }
 
 .bg-gradient-accent-subtle {
-  background: linear-gradient(180deg, oklch(0.65 0.18 50 / 0.08) 0%, oklch(0.55 0.22 45 / 0.02) 100%);
+  background: linear-gradient(
+    180deg,
+    oklch(0.65 0.18 50 / 0.08) 0%,
+    oklch(0.55 0.22 45 / 0.02) 100%
+  );
 }
 
 .spotlight-container {
@@ -151,4 +157,183 @@
 .spotlight-content {
   position: relative;
   z-index: 10;
+}
+
+/* Scroll Animation Variables */
+:root {
+  --animation-duration: 0.6s;
+  --animation-easing: cubic-bezier(0.16, 1, 0.3, 1);
+  --animation-offset: 24px;
+}
+
+/* Base Animation Classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(var(--animation-offset));
+  transition:
+    opacity var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Animations */
+.hero-animate {
+  opacity: 0;
+  transform: translateY(var(--animation-offset));
+  transition:
+    opacity var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
+}
+
+.hero-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-animate-delay-1 {
+  transition-delay: 0.1s;
+}
+.hero-animate-delay-2 {
+  transition-delay: 0.2s;
+}
+.hero-animate-delay-3 {
+  transition-delay: 0.3s;
+}
+.hero-animate-delay-4 {
+  transition-delay: 0.4s;
+}
+.hero-animate-delay-5 {
+  transition-delay: 0.5s;
+}
+.hero-animate-delay-6 {
+  transition-delay: 0.6s;
+}
+
+/* Section Heading Animation */
+.section-heading-animate {
+  opacity: 0;
+  transform: translateY(var(--animation-offset));
+  transition:
+    opacity var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
+}
+
+.section-heading-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Card Animations */
+.stagger-animate {
+  opacity: 0;
+  transform: translateY(var(--animation-offset));
+  transition:
+    opacity var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
+}
+
+.stagger-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-delay-0 {
+  transition-delay: 0s;
+}
+.stagger-delay-1 {
+  transition-delay: 0.1s;
+}
+.stagger-delay-2 {
+  transition-delay: 0.2s;
+}
+.stagger-delay-3 {
+  transition-delay: 0.3s;
+}
+.stagger-delay-4 {
+  transition-delay: 0.4s;
+}
+.stagger-delay-5 {
+  transition-delay: 0.5s;
+}
+.stagger-delay-6 {
+  transition-delay: 0.6s;
+}
+.stagger-delay-7 {
+  transition-delay: 0.7s;
+}
+.stagger-delay-8 {
+  transition-delay: 0.8s;
+}
+
+/* Process Steps - Slide from Left */
+.process-step-animate {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition:
+    opacity var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
+}
+
+.process-step-animate.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Result/Stat Cards - Scale from 0.95 */
+.stat-card-animate {
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
+}
+
+.stat-card-animate.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Testimonials - Fade from bottom */
+.testimonial-animate {
+  opacity: 0;
+  transform: translateY(var(--animation-offset));
+  transition:
+    opacity var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
+}
+
+.testimonial-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA Section - Fade + Zoom from 0.97 */
+.cta-animate {
+  opacity: 0;
+  transform: scale(0.97);
+  transition:
+    opacity var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
+}
+
+.cta-animate.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Navbar Blur on Scroll */
+.navbar-scroll-blur {
+  transition:
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+.navbar-scroll-blur.is-scrolled {
+  background-color: oklch(0.99 0.005 90 / 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }

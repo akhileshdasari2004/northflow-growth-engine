@@ -4,6 +4,10 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
 interface FlickeringGridProps extends React.HTMLAttributes<HTMLDivElement> {
   squareSize?: number;
   gridGap?: number;
@@ -11,11 +15,8 @@ interface FlickeringGridProps extends React.HTMLAttributes<HTMLDivElement> {
   color?: string;
   width?: number;
   height?: number;
+  className?: string;
   maxOpacity?: number;
-}
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
 }
 
 export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
@@ -31,19 +32,18 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
 
   const memoizedColor = useMemo(() => {
-    const toRGBA = (color: string) => {
+    const toRGBA = (c: string) => {
       if (typeof window === "undefined") {
-        return `rgba(0, 0, 0,`;
+        return "rgba(0, 0, 0,";
       }
       const canvas = document.createElement("canvas");
       canvas.width = canvas.height = 1;
       const ctx = canvas.getContext("2d");
       if (!ctx) return "rgba(255, 0, 0,";
-      ctx.fillStyle = color;
+      ctx.fillStyle = c;
       ctx.fillRect(0, 0, 1, 1);
       const [r, g, b] = Array.from(ctx.getImageData(0, 0, 1, 1).data);
       return `rgba(${r}, ${g}, ${b},`;
@@ -134,9 +134,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
     let lastTime = 0;
     const animate = (time: number) => {
-      if (!isInView) return;
-
-      const deltaTime = (time - lastTime) / 1000;
+      const deltaTime = lastTime ? (time - lastTime) / 1000 : 0.016;
       lastTime = time;
 
       updateSquares(gridParams.squares, deltaTime);
@@ -152,31 +150,19 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       animationFrameId = requestAnimationFrame(animate);
     };
 
+    animationFrameId = requestAnimationFrame(animate);
+
     const resizeObserver = new ResizeObserver(() => {
       updateCanvasSize();
     });
 
     resizeObserver.observe(container);
 
-    const intersectionObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry!.isIntersecting);
-      },
-      { threshold: 0 },
-    );
-
-    intersectionObserver.observe(canvas);
-
-    if (isInView) {
-      animationFrameId = requestAnimationFrame(animate);
-    }
-
     return () => {
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
-      intersectionObserver.disconnect();
     };
-  }, [setupCanvas, updateSquares, drawGrid, width, height, isInView]);
+  }, [setupCanvas, updateSquares, drawGrid, width, height]);
 
   return (
     <div ref={containerRef} className={cn(`h-full w-full ${className}`)} {...props}>

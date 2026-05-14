@@ -103,7 +103,7 @@ export function FAQSection() {
             <Badge variant="eyebrow">FAQ</Badge>
             <span className="block w-7 h-px bg-primary" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif text-foreground">Find what you need</h2>
+          <h2 className="text-4xl md:text-5xl font-sans text-foreground">Find what you need</h2>
         </div>
 
         <Accordion type="single" collapsible className="w-full" defaultValue="1">

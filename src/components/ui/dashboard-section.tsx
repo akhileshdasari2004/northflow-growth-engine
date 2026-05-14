@@ -69,7 +69,7 @@ export function DashboardSection() {
             <Badge variant="eyebrow">DASHBOARD</Badge>
             <span className="block w-7 h-px bg-primary" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-sans text-foreground mb-4">
             See Your Growth in Real-Time
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
@@ -83,7 +83,7 @@ export function DashboardSection() {
           {statsData.map((stat) => (
             <Card key={stat.label} className="bg-white border-border">
               <CardContent className="p-6 text-center">
-                <p className="text-3xl font-serif text-gradient-accent mb-1">{stat.value}</p>
+                <p className="text-3xl font-sans text-gradient-accent mb-1">{stat.value}</p>
                 <p className="font-medium text-foreground text-sm">{stat.label}</p>
                 <p className="text-xs text-muted-foreground mt-1">{stat.period}</p>
               </CardContent>
@@ -102,7 +102,7 @@ export function DashboardSection() {
                     <TrendingUp className="w-4 h-4 text-[oklch(0.65_0.18_50)]" />
                     Revenue Growth
                   </p>
-                  <p className="text-2xl font-serif text-foreground mt-1">$89,000</p>
+                  <p className="text-2xl font-sans text-foreground mt-1">$89,000</p>
                 </div>
                 <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
                   +24%
@@ -150,7 +150,7 @@ export function DashboardSection() {
                     <Users className="w-4 h-4 text-[oklch(0.65_0.18_50)]" />
                     Lead Generation
                   </p>
-                  <p className="text-2xl font-serif text-foreground mt-1">2,290</p>
+                  <p className="text-2xl font-sans text-foreground mt-1">2,290</p>
                 </div>
                 <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
                   +18%
@@ -219,7 +219,7 @@ export function DashboardSection() {
           <Card className="bg-white border-border">
             <CardContent className="p-6">
               <div className="text-center mb-6">
-                <p className="text-5xl font-serif text-gradient-accent mb-2">99.99%</p>
+                <p className="text-5xl font-sans text-gradient-accent mb-2">99.99%</p>
                 <p className="text-muted-foreground text-sm">System Uptime</p>
               </div>
               <div className="grid grid-cols-2 gap-4">

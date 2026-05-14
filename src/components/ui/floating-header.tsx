@@ -26,6 +26,18 @@ export function FloatingHeader() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScrollBlur = () => {
+      setScrolled(window.scrollY > 60);
+    };
+
+    window.addEventListener("scroll", handleScrollBlur, { passive: true });
+    handleScrollBlur();
+    return () => window.removeEventListener("scroll", handleScrollBlur);
+  }, []);
+
   const links = [
     {
       label: "Services",
@@ -48,15 +60,18 @@ export function FloatingHeader() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-transform duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-transform duration-300 navbar-scroll-blur",
         hidden ? "-translate-y-full" : "translate-y-0",
+        scrolled ? "is-scrolled" : "",
       )}
     >
       <div className="mx-auto w-full max-w-4xl px-4 md:px-6 pt-4">
         <div
           className={cn(
             "rounded-lg border border-border shadow-sm",
-            "bg-background/95 supports-[backdrop-filter]:bg-background/80 backdrop-blur-lg",
+            scrolled
+              ? "bg-background/95 supports-[backdrop-filter]:bg-background/80 backdrop-blur-lg"
+              : "bg-background/40",
           )}
         >
           <nav className="mx-auto flex items-center justify-between p-1.5">

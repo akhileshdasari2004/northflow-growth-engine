@@ -3,15 +3,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import {
-  Search,
-  Settings,
-  Zap,
-  LineChart,
-  Phone,
-  CheckCircle,
-  ArrowRight,
-} from "lucide-react";
+import { Search, Settings, Zap, LineChart, Phone, CheckCircle, ArrowRight } from "lucide-react";
 
 const steps = [
   {
@@ -26,8 +18,7 @@ const steps = [
     number: "02",
     icon: Settings,
     title: "Done-for-you setup in 7 days",
-    description:
-      "We build and connect all automations to your existing CRM and phone system.",
+    description: "We build and connect all automations to your existing CRM and phone system.",
     detail: "Zero disruption to your team",
   },
   {
@@ -42,8 +33,7 @@ const steps = [
     number: "04",
     icon: LineChart,
     title: "Weekly optimization",
-    description:
-      "We review performance weekly and run seasonal campaigns around weather swings.",
+    description: "We review performance weekly and run seasonal campaigns around weather swings.",
     detail: "Continuous improvement",
   },
 ];
@@ -59,12 +49,12 @@ export function HowItWorksSection() {
       <div className="mx-auto max-w-5xl px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="section-heading-animate flex items-center justify-center gap-3 mb-6">
             <span className="block w-7 h-px bg-primary" />
             <Badge variant="eyebrow">HOW IT WORKS</Badge>
             <span className="block w-7 h-px bg-primary" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
+          <h2 className="section-heading-animate text-4xl md:text-5xl font-sans text-foreground mb-4">
             A simple rollout with measurable wins
           </h2>
         </div>
@@ -72,7 +62,7 @@ export function HowItWorksSection() {
         {/* Features-11 Layout Grid */}
         <div className="mx-auto grid gap-2 sm:grid-cols-5">
           {/* Card 1 - Large Left (col-span-3) */}
-          <Card className="group overflow-hidden shadow-black/5 sm:col-span-3 sm:rounded-none sm:rounded-tl-xl">
+          <Card className="process-step-animate stagger-delay-0 group overflow-hidden shadow-black/5 sm:col-span-3 sm:rounded-none sm:rounded-tl-xl">
             <CardHeader>
               <div className="md:p-6">
                 <div className="flex items-center gap-2 text-muted-foreground mb-2">
@@ -106,7 +96,7 @@ export function HowItWorksSection() {
           </Card>
 
           {/* Card 2 - Right (col-span-2) */}
-          <Card className="group overflow-hidden shadow-zinc-950/5 sm:col-span-2 sm:rounded-none sm:rounded-tr-xl">
+          <Card className="process-step-animate stagger-delay-1 group overflow-hidden shadow-zinc-950/5 sm:col-span-2 sm:rounded-none sm:rounded-tr-xl">
             <div className="p-6 md:p-8">
               <div className="flex items-center gap-2 text-muted-foreground mb-2">
                 <span className="text-xs tracking-widest uppercase text-[oklch(0.65_0.18_50)]">
@@ -134,7 +124,7 @@ export function HowItWorksSection() {
           </Card>
 
           {/* Card 3 - Bottom Left (col-span-2) */}
-          <Card className="group p-6 shadow-black/5 sm:col-span-2 sm:rounded-none sm:rounded-bl-xl md:p-12">
+          <Card className="process-step-animate stagger-delay-2 group p-6 shadow-black/5 sm:col-span-2 sm:rounded-none sm:rounded-bl-xl md:p-12">
             <div className="flex items-center gap-2 text-muted-foreground mb-4">
               <span className="text-xs tracking-widest uppercase text-[oklch(0.65_0.18_50)]">
                 {steps[2].number}
@@ -154,7 +144,7 @@ export function HowItWorksSection() {
           </Card>
 
           {/* Card 4 - Bottom Right (col-span-3) */}
-          <Card className="group relative shadow-black/5 sm:col-span-3 sm:rounded-none sm:rounded-br-xl">
+          <Card className="process-step-animate stagger-delay-3 group relative shadow-black/5 sm:col-span-3 sm:rounded-none sm:rounded-br-xl">
             <CardHeader className="p-6 md:p-12">
               <div className="flex items-center gap-2 text-muted-foreground mb-2">
                 <span className="text-xs tracking-widest uppercase text-[oklch(0.65_0.18_50)]">
@@ -201,19 +191,24 @@ export function ImpactSection() {
     <section id="results" className="py-24">
       <div className="max-w-6xl mx-auto px-12">
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="section-heading-animate flex items-center justify-center gap-3 mb-6">
             <span className="block w-7 h-px bg-primary" />
             <Badge variant="eyebrow">IMPACT</Badge>
             <span className="block w-7 h-px bg-primary" />
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl text-foreground max-w-3xl mx-auto leading-tight">
+          <h2 className="section-heading-animate font-sans text-4xl md:text-5xl text-foreground max-w-3xl mx-auto leading-tight">
             Built to increase booked jobs, trust, and recurring revenue
           </h2>
         </div>
         <div className="grid md:grid-cols-3 gap-px bg-border">
           {metrics.map((m, i) => (
-            <div key={i} className="bg-white text-center py-16 px-8 border border-border">
-              <div className="font-serif text-5xl md:text-6xl text-gradient-accent mb-3">{m.value}</div>
+            <div
+              key={i}
+              className={`stat-card-animate stagger-delay-${i} bg-white text-center py-16 px-8 border border-border`}
+            >
+              <div className="font-sans text-5xl md:text-6xl text-gradient-accent mb-3">
+                {m.value}
+              </div>
               <div className="text-muted-foreground text-sm leading-relaxed max-w-[180px] mx-auto">
                 {m.label}
               </div>

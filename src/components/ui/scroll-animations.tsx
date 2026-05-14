@@ -35,7 +35,9 @@ export function ScrollReveal({
     <motion.div
       ref={ref}
       initial={{ ...directionVariants[direction], opacity: 0 }}
-      animate={isInView ? { x: 0, y: 0, opacity: 1 } : { ...directionVariants[direction], opacity: 0 }}
+      animate={
+        isInView ? { x: 0, y: 0, opacity: 1 } : { ...directionVariants[direction], opacity: 0 }
+      }
       transition={{
         duration,
         delay,
@@ -81,13 +83,7 @@ export function StaggerContainer({
   );
 }
 
-export function StaggerItem({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function StaggerItem({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <motion.div
       variants={{
