@@ -28,6 +28,7 @@ export const Route = createFileRoute("/")({
         content:
           "Recover missed calls, grow reviews, and build recurring membership revenue for your HVAC business.",
       },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     ],
   }),
 });
